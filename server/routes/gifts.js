@@ -2,19 +2,21 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import giftData from "../data/gifts.js";
+import GiftsController from "../controllers/gifts.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const router = express.Router();
-router.get("/", (req, res) => {
-    res.status(200).json(giftData);
-});
 
-router.get("/:giftId", (req, res) => {
-    // serve the gift detail HTML (we’ll create this in Step 5/6)
-    res.status(200).sendFile(path.resolve(__dirname, "../public/gift.html"));
+// Serve data from Postgres
+router.get("/", GiftsController.getGifts);
+
+// Keep serving the detail page (static HTML) for deep links
+router.get("/:giftId", (_req, res) => {
+    res
+        .status(200)
+        .sendFile(path.resolve(__dirname, "..", "..", "client", "public", "gift.html"));
 });
 
 export default router;
