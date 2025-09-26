@@ -1,0 +1,167 @@
+/* --------- Base / Reset --------- */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --ink: #0f0f3d;
+  /* deep indigo */
+  --ink-2: #1a1a7a;
+  /* border indigo */
+  --shadow: rgba(26, 26, 122, 0.18);
+  --accent: #ff4fa0;
+  /* pink link */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: #111;
+  background: #fff;
+}
+
+/* --------- Header --------- */
+header {
+  padding: 24px 28px;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-left img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+.header-left h1 {
+  margin: 0;
+  font-size: 44px;
+  font-weight: 700;
+  color: #111;
+}
+
+.header-right button {
+  padding: 12px 20px;
+  border: 3px solid var(--ink-2);
+  background: #fff;
+  color: var(--ink-2);
+  font-weight: 600;
+  border-radius: 16px;
+  letter-spacing: .25px;
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow: 6px 6px 0 0 var(--shadow);
+}
+
+.header-right button:hover {
+  transform: translateY(-1px);
+  background: #f7f7ff;
+}
+
+/* --------- Main grid --------- */
+#main-content.main {
+  max-width: 1200px;
+  margin: 36px auto 80px;
+  padding: 0 28px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 64px;
+}
+
+@media (max-width: 1100px) {
+  #main-content.main {
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 48px;
+  }
+}
+
+@media (max-width: 700px) {
+  #main-content.main {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+/* --------- Cards --------- */
+.card {
+  background: #fff;
+  border: 3px solid var(--ink-2);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 10px 12px 0 0 var(--shadow);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 12px 14px 0 0 var(--shadow);
+}
+
+/* image area built from background-image in JS */
+.top-container {
+  height: 250px;
+  /* controls image height */
+  background-size: contain;
+  /* keep full image inside */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f6f6fb;
+  /* subtle light backdrop */
+  border-bottom: 1px solid #e9e9f6;
+}
+
+/* text area */
+.bottom-container {
+  padding: 18px 18px 22px;
+}
+
+.bottom-container h3 {
+  margin: 6px 0 10px;
+  font-size: 22px;
+  font-weight: 800;
+  color: #111;
+}
+
+.bottom-container p {
+  margin: 6px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.bottom-container a[role="button"],
+.bottom-container a {
+  display: inline-block;
+  margin-top: 8px;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.bottom-container a:hover {
+  text-decoration: underline;
+}
+
+/* optional small label styles if you add any badges */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eef;
+  color: var(--ink-2);
+  font-weight: 600;
+  font-size: 12px;
+}
